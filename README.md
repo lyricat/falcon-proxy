@@ -17,8 +17,8 @@ Yes, it's not a modern Web application.
 
 ## Looking for maintainers
 
-I am not using falcon-proxy anymore. I prefer to use other way to access the Internet via Proxy or VPN. However, the extension is still useful for a lot of users. So I'd like to open source it, and look for maintainer.
+I am not using falcon-proxy anymore. I prefer to use other way to access the Internet via Proxy or VPN. However, the extension is still useful for a lot of people. So I'd like to open source it, and look for maintainer.
 
 ## Alternative?
 
-I don't use any similar extension now, but I find [SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega) may be a good alternative. It's opensource, has a lot of features and support both Chrome and Firefox.
+I don't use any similar extension, but I find [SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega) may be a good alternative. It's opensource, has a lot of features and supports both Chrome and Firefox.
