@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      media="all"
+      href="styles/mochi.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      media="all"
+      href="styles/style.css"
+    />
+    <style>
+      body {
+        width: 357px;
+        display: block;
+      }
+    </style>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/spine.js"></script>
+    <script type="text/javascript" src="scripts/spine.local.js"></script>
+    <script type="text/javascript" src="scripts/base64.js"></script>
+    <script type="text/javascript" src="scripts/mochi.js"></script>
+
+    <script type="text/javascript" src="scripts/logging.js"></script>
+    <script type="text/javascript" src="scripts/sandbox.js"></script>
+    <script type="text/javascript" src="scripts/agent.js"></script>
+    <script type="text/javascript" src="scripts/model.js"></script>
+
+    <script type="text/javascript" src="scripts/profile_list.js"></script>
+    <script type="text/javascript" src="scripts/profile_detail.js"></script>
+    <script type="text/javascript" src="scripts/popup.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="info" class="prompt"></div>
+      <div id="error" class="prompt"></div>
+      <div id="profile_list_page" class="page">
+        <ul class="mochi_list">
+          <li class="mochi_list_item">
+            <input
+              id="proxy_switch"
+              class="mochi_toggle widget"
+              type="checkbox"
+            />
+            <label class="label">Turn On/Off</label>
+          </li>
+        </ul>
+        <ul id="profile_list" class="mochi_list">
+          <li class="mochi_list_item with_trigger add">
+            <a id="add_proxy_button" class="trigger">
+              <span class="widget more"></span>
+              <label class="label">Add ...</label>
+            </a>
+          </li>
+        </ul>
+        <p style="text-align: right">
+          <input
+            id="speed_test_button"
+            type="button"
+            class="mochi_button round"
+            value="Test Speed"
+          />
+        </p>
+        <div style="background: #ddd; padding: 4px 10px; border-radius: 6px">
+          <a
+            style="color: #555; font-size: 12px; text-decoration: none"
+            href="https://www.fox.one"
+            >FoxOne: Best Crypto Assets App from Falcon
+            <span>Learn more</span>
+          </a>
+        </div>
+      </div>
+      <!-- #profile_page -->
+      <div id="profile_detail_page" class="page">
+        <input type="hidden" class="action_id" value="edit" />
+        <ul class="mochi_list">
+          <li class="mochi_list_item">
+            <input
+              type="text"
+              id="proxy_name_entry"
+              class="mochi_entry widget proxy_name_entry"
+            />
+            <label for="proxy_name_entry" class="label">Name</label>
+          </li>
+        </ul>
+        <ul class="mochi_button_group round proxy_type_button_group">
+          <li>
+            <a href="#off" class="mochi_button_group_item selected" name="type"
+              >Off</a
+            >
+          </li>
+          <li>
+            <a href="#system" class="mochi_button_group_item" name="type"
+              >System</a
+            >
+          </li>
+          <li>
+            <a href="#auto" class="mochi_button_group_item" name="type">Auto</a>
+          </li>
+          <li>
+            <a href="#manual" class="mochi_button_group_item" name="type"
+              >Manual</a
+            >
+          </li>
+        </ul>
+        <div class="off_proxy_block block">
+          <ul class="mochi_list">
+            <li class="mochi_list_item">
+              <label class="label">Connect to the Internet directly.</label>
+            </li>
+          </ul>
+        </div>
+        <div class="system_proxy_block block">
+          <ul class="mochi_list">
+            <li class="mochi_list_item">
+              <label class="label">Use System proxy settings.</label>
+            </li>
+          </ul>
+        </div>
+        <div class="auto_proxy_block block">
+          <ul class="mochi_list">
+            <li class="mochi_list_item">
+              <input
+                type="text"
+                placeholder="pac file here"
+                class="mochi_entry widget pac_url_entry"
+              />
+              <label class="label">URL</label>
+            </li>
+          </ul>
+        </div>
+        <div class="manual_proxy_block block">
+          <ul class="mochi_list">
+            <li class="mochi_list_item">
+              <select class="mochi_combo widget scheme_combo" name="">
+                <option value="http">HTTP Proxy</option>
+                <option value="https">HTTPS Proxy</option>
+                <option value="socks4">SOCKS v4 Proxy</option>
+                <option value="socks5">SOCKS v5 Proxy</option>
+              </select>
+              <label class="label">Proxy Type</label>
+            </li>
+            <li class="mochi_list_item">
+              <input
+                type="text"
+                placeholder="e.g. 127.0.0.1"
+                class="mochi_entry widget host_entry"
+              />
+              <label class="label">Host</label>
+            </li>
+            <li class="mochi_list_item">
+              <input
+                type="text"
+                placeholder="e.g. 8080"
+                class="mochi_entry widget port_entry"
+              />
+              <label class="label">Port</label>
+            </li>
+            <li class="mochi_list_item" style="height: 60px">
+              <textarea
+                type="text"
+                placeholder="e.g. *.qq.com"
+                class="mochi_textarea widget bypass_entry"
+              ></textarea>
+              <label class="label">Bypass</label>
+            </li>
+            <!--
+					<li class="mochi_list_item">
+						<input type="checkbox" class="mochi_toggle widget auth_proxy_toggle"/>
+						<label class="label">Authentication</label>
+					</li> -->
+          </ul>
+        </div>
+        <!-- manual_proxy_block -->
+        <div class="block auth_proxy_block">
+          <ul class="mochi_list">
+            <li class="mochi_list_item">
+              <input type="text" class="mochi_entry widget username_entry" />
+              <label class="label">Username</label>
+            </li>
+            <li class="mochi_list_item">
+              <input type="text" class="mochi_entry widget password_entry" />
+              <label class="label">Password</label>
+            </li>
+          </ul>
+        </div>
+        <!-- auth_proxy_block -->
+        <p>
+          <input
+            type="button"
+            class="mochi_button round red detail_delete_button"
+            value="Delete"
+          />
+          <input
+            type="button"
+            class="mochi_button round blue detail_save_button"
+            style="float: right"
+            value="Save"
+          />
+          <input
+            type="button"
+            class="mochi_button round detail_cancel_button"
+            style="float: right"
+            value="Cancel"
+          />
+        </p>
+      </div>
+      <!-- #detail_page -->
+    </div>
+  </body>
+  <iframe
+    id="sandbox"
+    src="sandbox.html"
+    width="0"
+    height="0"
+    style="display: none"
+  ></iframe>
+</html>

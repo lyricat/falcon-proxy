@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Falcon Proxy",
+  "description": "Falcon Proxy. Simple, clear and easy to use.",
+  "version": "0.6.9",
+  "default_locale": "en",
+  "update_url": "https://api.0x110.com/ssledge-chrome-updates.xml",
+  "browser_action": {
+    "default_icon": "image/icon_mono_off.png",
+    "default_popup": "popup.html"
+  },
+	"background": {
+	  "scripts": ["scripts/background.js"]
+	},
+  "sandbox": {
+    "pages": ["sandbox.html"]
+  },
+  "icons": {
+    "24": "image/icon_mono_on.png",
+    "128": "image/icon_128.png"
+  },
+  "permissions": [
+    "<all_urls>",
+    "notifications",
+    "proxy"
+  ]
+}

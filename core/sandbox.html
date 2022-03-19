@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="scripts/doT.min.js"></script>
+	<script type="text/javascript" src="scripts/tmpl.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		window.addEventListener("message", function(ev) {
+			var id = ev.data.id;
+			var cmd = ev.data.cmd;
+			var context = ev.data.context;
+    	// console.log(ev)
+			switch (cmd) {
+			case 'render':
+				if (tmpls[context.tmpl]) {
+					res = tmpls[context.tmpl](context.data);
+					st = 0;
+				} else {
+					res = "No such a template.";
+					st = 1;
+				} 
+				ev.source.postMessage({
+					id: id,
+					state: st,
+					result: res
+				}, ev.origin);
+			break;
+			case 'ok?':
+				ev.source.postMessage({
+					id: id, state:0, result: 'ok.'	
+				}, ev.origin);
+			break;
+			default:
+				ev.source.postMessage({
+					id: id,
+					state: 1,
+					result: "I don't know what are you talking about."
+				}, ev.origin)
+			break;
+			}
+		});	
+		// tell father i am ready.
+		
+	</script>
+</body>
+</html>
